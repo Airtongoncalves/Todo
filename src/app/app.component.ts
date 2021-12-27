@@ -46,7 +46,8 @@ add(){
 remove(todo : Todo)  {
     const index  = this.todos.indexOf(todo);
     alert(index);
-    if (index !== -1){
+    if (index !== -1)
+    {
 
         this.todos.splice(index,1);
         this.save();
