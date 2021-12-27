@@ -10,7 +10,7 @@ import { Todo } from 'src/models/todo.model';
 export class AppComponent {
   public mode: String = 'list';
   public todos : Todo[]=[];
-  public title : String = 'Lista de Tarefas';
+  public title : String = 'Lista de Tarefas da Duda';
  public form : FormGroup;
   
 /**
@@ -38,7 +38,7 @@ add(){
  
   const title  = this.form.controls['title'].value;
   const id  = this.todos.length + 1;
-  
+  console.log(new Todo(id,title,false));
   this.todos.push(new Todo(id,title,false));
   this.save();
   this.clear();
@@ -69,8 +69,12 @@ save(){
   this.mode='list';
 }
 load(){
-  console.log('fui');
-  this.todos   =  JSON.parse(localStorage.getItem('todos') || '{}');   
+  const dados  = localStorage.getItem('todos');
+  if(dados !== null)
+  {
+    this.todos   =  JSON.parse(localStorage.getItem('todos') || '{}');   
+  }
+ 
  }
  changeMode(mode:String){
    this.mode=mode;
